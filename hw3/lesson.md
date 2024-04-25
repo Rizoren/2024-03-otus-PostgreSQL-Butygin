@@ -1,10 +1,3 @@
-проверьте что кластер запущен через sudo -u postgres pg_lsclusters
-зайдите из под пользователя postgres в psql и сделайте произвольную таблицу с произвольным содержимым
-postgres=# create table test(c1 text);
-postgres=# insert into test values('1');
-\q
-остановите postgres например через sudo -u postgres pg_ctlcluster 15 main stop
-
 > Занятие 6  
 Установка и настройка PostgreSQL.
 ---
