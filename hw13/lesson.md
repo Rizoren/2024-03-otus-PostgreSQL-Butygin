@@ -27,5 +27,6 @@ select ticket_no,flight_id,fare_conditions,amount from ticket_flights;
 ```
 Условно доступ быстрее будет по классу
 ![alt text](image.png)
+
 *индекс удаляется т.к. его нет на партицированной таблице
 ![alt text](image-1.png)
