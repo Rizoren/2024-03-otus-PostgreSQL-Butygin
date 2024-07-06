@@ -1,5 +1,5 @@
-> Занятие 11  
-Нагрузочное тестирование и тюнинг PostgreSQL.
+> Занятие 12  
+Работа с join'ами и статистикой PostgreSQL.
 
 Модель демо-базы авиаперелетов:
 ![alt text](image.png)
@@ -59,3 +59,16 @@ select a1.airport_code as airport_code_from, a2.airport_code as airport_code_to
   order by regexp_replace(ai.seat_no, '\D', '')::int, regexp_replace(ai.seat_no, '\d', '')   
   ```
   ![alt text](image-3.png)
+
+---
+Метрики* 
+--- 
+
+```sql
+-- Топ таблиц в которых неиспользовалось чтение по индексу:
+select * from pg_stat_user_tables t order by t.idx_scan nulls first limit 5;
+-- Топ наименее вариативных данных в базе (возможно что то в справочники можно потом превратить):
+select * from pg_stats t where t.schemaname = 'bookings' and t.n_distinct > 0 order by t.n_distinct limit 5
+-- Список активных сессий к СУБД:
+select * from pg_stat_activity t where t.state = 'active'
+```
